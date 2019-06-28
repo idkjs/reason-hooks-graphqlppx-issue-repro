@@ -4154,10 +4154,9 @@ readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
-reason-apollo-hooks@2.0.0-beta.1:
+"reason-apollo-hooks@https://github.com/Astrocoders/reason-apollo-hooks.git":
   version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/reason-apollo-hooks/-/reason-apollo-hooks-2.0.0-beta.1.tgz#4cae1fdc908bfb24ac1ec02edcb4c0c2589b64a5"
-  integrity sha512-GXa05HPc7VCQxsR8wejpeeQf8Cv3lKl4SqEMH+d0wmPS0shMJspkPRwFmqVaqoW7bP4jc52aPzR6dqWDjFliEw==
+  resolved "https://github.com/Astrocoders/reason-apollo-hooks.git#58c1b5ef59070f882b8841de35cbe8e3eef7c4b0"
 
 reason-apollo@^0.16.4:
   version "0.16.4"
