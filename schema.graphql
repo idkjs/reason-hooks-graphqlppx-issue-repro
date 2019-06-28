@@ -1,0 +1,68 @@
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+type Book {
+  id: ID!
+  name: String!
+  releaseDate: String!
+}
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+type Character {
+  id: ID!
+  name: String!
+  culture: String
+  titles: [String!]
+  aliases: [String!]
+  born: String
+  died: String
+  father: Character
+  mother: Character
+  spouse: Character
+  children: [Character!]
+  allegiances: [House!]
+  appearedIn: [TvSeason!]!
+  isAlive: Boolean!
+  playedBy: String
+  books: [Book!]
+}
+
+type House {
+  id: ID!
+  name: String!
+  titles: [String!]
+  members: [Character!]!
+  slogan: String
+  overlord: Character
+  currentLord: Character
+  founder: Character
+  ancestralWeapons: [String!]
+  coatOfArms: String
+  seats: [String!]
+}
+
+type Query {
+  getCharacters(sortDirection: SortDirection): [Character!]!
+  getCharacter(characterId: ID!): Character
+  getHouses(sortDirection: SortDirection): [House!]!
+  getHouse(houseId: ID!): House
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+type TvSeason {
+  id: ID!
+  startDate: String!
+  endDate: String!
+  name: String!
+  characters: [Character!]!
+}
+
+# The `Upload` scalar type represents a file upload.
+scalar Upload
