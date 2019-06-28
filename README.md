@@ -37,3 +37,7 @@ query CharacterList {
 ```
 
 When you run this project, you get the following error in the browser console.
+
+`Error: graphql_ppx: Field getCharacters on type Query is missing Index.js line 684 > eval:6:9`
+
+The field is obviously there. Maybe I am missing something?

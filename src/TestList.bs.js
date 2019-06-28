@@ -11,7 +11,7 @@ var Query$ReasonApolloHooks = require("reason-apollo-hooks/src/Query.bs.js");
 
 require("./CharacterList.css");
 
-var ppx_printed_query = "query CharacterList  {\ngetCharacters(sortDirection: ASC)  {\nid  \nname  \nplayedBy  \nculture  \nallegiances  {\nname  \n}\n\nisAlive  \n}\n\n}\n";
+var ppx_printed_query = "query CharacterList  {\ngetCharacters(sortDirection: ASC)  {\nid  \nname  \n}\n\n}\n";
 
 function parse(value) {
   var match = Js_json.decodeObject(value);
@@ -43,82 +43,9 @@ function parse(value) {
                   } else {
                     tmp$1 = Js_exn.raiseError("graphql_ppx: Field name on type Character is missing");
                   }
-                  var match$5 = Js_dict.get(value$1, "playedBy");
-                  var tmp$2;
-                  if (match$5 !== undefined) {
-                    var value$4 = Caml_option.valFromOption(match$5);
-                    var match$6 = Js_json.decodeNull(value$4);
-                    if (match$6 !== undefined) {
-                      tmp$2 = undefined;
-                    } else {
-                      var match$7 = Js_json.decodeString(value$4);
-                      tmp$2 = match$7 !== undefined ? match$7 : Js_exn.raiseError("graphql_ppx: Expected string, got " + JSON.stringify(value$4));
-                    }
-                  } else {
-                    tmp$2 = undefined;
-                  }
-                  var match$8 = Js_dict.get(value$1, "culture");
-                  var tmp$3;
-                  if (match$8 !== undefined) {
-                    var value$5 = Caml_option.valFromOption(match$8);
-                    var match$9 = Js_json.decodeNull(value$5);
-                    if (match$9 !== undefined) {
-                      tmp$3 = undefined;
-                    } else {
-                      var match$10 = Js_json.decodeString(value$5);
-                      tmp$3 = match$10 !== undefined ? match$10 : Js_exn.raiseError("graphql_ppx: Expected string, got " + JSON.stringify(value$5));
-                    }
-                  } else {
-                    tmp$3 = undefined;
-                  }
-                  var match$11 = Js_dict.get(value$1, "allegiances");
-                  var tmp$4;
-                  if (match$11 !== undefined) {
-                    var value$6 = Caml_option.valFromOption(match$11);
-                    var match$12 = Js_json.decodeNull(value$6);
-                    if (match$12 !== undefined) {
-                      tmp$4 = undefined;
-                    } else {
-                      var match$13 = Js_json.decodeArray(value$6);
-                      tmp$4 = match$13 !== undefined ? match$13.map((function (value) {
-                                var match = Js_json.decodeObject(value);
-                                if (match !== undefined) {
-                                  var match$1 = Js_dict.get(Caml_option.valFromOption(match), "name");
-                                  var tmp;
-                                  if (match$1 !== undefined) {
-                                    var value$1 = Caml_option.valFromOption(match$1);
-                                    var match$2 = Js_json.decodeString(value$1);
-                                    tmp = match$2 !== undefined ? match$2 : Js_exn.raiseError("graphql_ppx: Expected string, got " + JSON.stringify(value$1));
-                                  } else {
-                                    tmp = Js_exn.raiseError("graphql_ppx: Field name on type House is missing");
-                                  }
-                                  return {
-                                          name: tmp
-                                        };
-                                } else {
-                                  return Js_exn.raiseError("graphql_ppx: Object is not a value");
-                                }
-                              })) : Js_exn.raiseError("graphql_ppx: Expected array, got " + JSON.stringify(value$6));
-                    }
-                  } else {
-                    tmp$4 = undefined;
-                  }
-                  var match$14 = Js_dict.get(value$1, "isAlive");
-                  var tmp$5;
-                  if (match$14 !== undefined) {
-                    var value$7 = Caml_option.valFromOption(match$14);
-                    var match$15 = Js_json.decodeBoolean(value$7);
-                    tmp$5 = match$15 !== undefined ? match$15 : Js_exn.raiseError("graphql_ppx: Expected boolean, got " + JSON.stringify(value$7));
-                  } else {
-                    tmp$5 = Js_exn.raiseError("graphql_ppx: Field isAlive on type Character is missing");
-                  }
                   return {
                           id: tmp,
-                          name: tmp$1,
-                          playedBy: tmp$2,
-                          culture: tmp$3,
-                          allegiances: tmp$4,
-                          isAlive: tmp$5
+                          name: tmp$1
                         };
                 } else {
                   return Js_exn.raiseError("graphql_ppx: Object is not a value");
@@ -174,21 +101,14 @@ var CharacterListQuery = Query$ReasonApolloHooks.Make([
 
 function TestList(Props) {
   var query = make(/* () */0);
+  var variables = query.variables;
   console.log("QUERY: ", query);
+  console.log("variables: ", variables);
   var match = Curry._3(CharacterListQuery[/* use */0], undefined, undefined, /* () */0);
-  var simple = match[0];
-  var tmp;
-  if (typeof simple === "number") {
-    tmp = simple === 0 ? React.createElement("div", undefined, "Loading...") : React.createElement("div", undefined, "No Data...");
-  } else if (simple.tag) {
-    tmp = React.createElement("div", undefined, simple[0].message);
-  } else {
-    console.log(simple[0]);
-    tmp = "Data should be in console";
-  }
+  console.log(match[0]);
   return React.createElement("div", {
               className: "CharacterList"
-            }, React.createElement("h2", undefined, "All Characters"), "Check Console", tmp);
+            }, React.createElement("h2", undefined, "All Characters"), "Check Console");
 }
 
 var make$1 = TestList;
