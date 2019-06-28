@@ -2,23 +2,25 @@
 'use strict';
 
 var React = require("react");
+var TestList = require("./TestList.bs.js");
+var ColdStart = require("./ColdStart.bs.js");
 var ReactDOMRe = require("reason-react/src/ReactDOMRe.js");
 var ApolloLinks = require("reason-apollo/src/ApolloLinks.bs.js");
 var ReasonApollo = require("reason-apollo/src/ReasonApollo.bs.js");
-var TestPokemonList = require("./TestPokemonList.bs.js");
+var CharacterDetail = require("./CharacterDetail.bs.js");
 var ReactHooks = require("@apollo/react-hooks");
 var ApolloInMemoryCache = require("reason-apollo/src/ApolloInMemoryCache.bs.js");
 
 var inMemoryCache = ApolloInMemoryCache.createInMemoryCache(undefined, undefined, /* () */0);
 
-var httpLink = ApolloLinks.createHttpLink("https://graphql-pokemon.now.sh", undefined, undefined, undefined, undefined, undefined, /* () */0);
+var httpLink = ApolloLinks.createHttpLink("https://j96vt.sse.codesandbox.io/", undefined, undefined, undefined, undefined, undefined, /* () */0);
 
 var client = ReasonApollo.createApolloClient(httpLink, inMemoryCache, undefined, undefined, undefined, undefined, /* () */0);
 
 ReactDOMRe.renderToElementWithId(React.createElement(ReactHooks.ApolloProvider, {
           client: client,
-          children: React.createElement(TestPokemonList.make, { })
-        }), "root");
+          children: null
+        }, React.createElement(ColdStart.make, { }), React.createElement(TestList.make, { }), React.createElement(CharacterDetail.make, { })), "root");
 
 exports.inMemoryCache = inMemoryCache;
 exports.httpLink = httpLink;

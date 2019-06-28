@@ -6,6 +6,7 @@
   "bs-dependencies": [
     "reason-react",
     "reason-apollo",
+    "bs-css",
     "reason-apollo-hooks"
   ],
   "reason": {

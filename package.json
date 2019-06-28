@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "graphqlppx-issue-repro",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "webpack": "webpack -w",
     "webpack:production": "NODE_ENV=production webpack",
     "server": "webpack-dev-server",
-    "get-schema": "yarn send-introspection-query http://localhost:4000/graphql"
+    "get-schema": "yarn send-introspection-query https://j96vt.sse.codesandbox.io/"
   },
   "keywords": [
     "BuckleScript"
@@ -20,6 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "@apollo/react-hooks": "beta",
+    "bs-css": "8.0.4",
     "graphql-tag": "2.10.1",
     "react": "^16.8.6",
     "react-apollo": "^2.5.8",
